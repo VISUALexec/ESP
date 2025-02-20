@@ -7,12 +7,10 @@ local LocalPlayer = Players.LocalPlayer
 local ESP_Enabled = true
 local ESP_Objects = {}
 
--- Function to generate rainbow colors
 local function getRainbowColor()
     return Color3.fromHSV(tick() % 5 / 5, 1, 1)
 end
 
--- Function to create ESP
 local function createESP(player)
     if player == LocalPlayer then return end
     if not player.Character then return end
@@ -86,7 +84,6 @@ local function createESP(player)
     end)
 end
 
--- Function to update ESP for new players
 local function updateESP()
     for _, player in pairs(Players:GetPlayers()) do
         if not ESP_Objects[player] then
@@ -95,7 +92,6 @@ local function updateESP()
     end
 end
 
--- Toggle ESP when "P" is pressed
 UserInputService.InputBegan:Connect(function(input, gameProcessed)
     if gameProcessed then return end
     if input.KeyCode == Enum.KeyCode.P then
@@ -103,8 +99,10 @@ UserInputService.InputBegan:Connect(function(input, gameProcessed)
     end
 end)
 
--- Constantly check for new players
 while true do
     updateESP()
     wait(1)
 end
+
+
+-- P to enable / disable esp!
